@@ -1,10 +1,17 @@
 import './App.css';
+import ToolBar from './components/UI/ToolBar/ToolBar.tsx';
+import NewsContainer from './features/news/containers/NewsContainer.tsx';
 
 const App = () => {
 
   return (
     <>
-     I'm starting my test work #10! Good luck to me ^_^!
+      <header>
+        <ToolBar />
+      </header>
+      <main>
+        <NewsContainer/>
+      </main>
     </>
   )
 };
