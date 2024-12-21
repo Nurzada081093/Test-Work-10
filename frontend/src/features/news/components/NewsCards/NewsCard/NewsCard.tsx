@@ -11,7 +11,7 @@ import dayjs from 'dayjs';
 import Typography from '@mui/joy/Typography';
 import { Box } from '@mui/material';
 import Button from '@mui/joy/Button';
-import { deleteNews, getNews, getOneNews } from '../../../newsThunk.ts';
+import { deleteNews, getNews } from '../../../newsThunk.ts';
 import { useAppDispatch } from '../../../../../app/hooks.ts';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -37,7 +37,6 @@ const NewsCard:React.FC<Props> = ({oneNews}) => {
   };
 
   const getOneNewsFromAPI = (id: string) => {
-    dispatch(getOneNews(id));
     navigate(`/news/${id}`);
   };
 

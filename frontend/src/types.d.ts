@@ -21,5 +21,14 @@ export interface IComment {
   description: string;
 }
 
+export interface CommentWithoutId {
+  author: string;
+  description: string;
+  news_id?: string;
+}
+
+
+
+
 
 

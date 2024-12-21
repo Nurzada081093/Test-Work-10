@@ -30,6 +30,7 @@ const initialState: NewsState = {
 export const allNewsSlice = (state: RootState) => state.news.news;
 export const getOneNewsSlice = (state: RootState) => state.news.oneNews;
 export const selectCreateLoading = (state: RootState) => state.news.loadings.addNews;
+export const getNewsLoading = (state: RootState) => state.news.loadings.getNews;
 
 const newsSlice = createSlice({
   name: 'news',

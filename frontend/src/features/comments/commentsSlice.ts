@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IComment } from '../../types';
-import { getComments } from './commentsThunk.ts';
+import { deleteComment, getComments, postComment } from './commentsThunk.ts';
 import { RootState } from '../../app/store.ts';
 
 interface NewsState {
@@ -24,6 +24,9 @@ const initialState: NewsState = {
 }
 
 export const allCommentsSlice = (state: RootState) => state.comments.comments;
+export const getCommentsSlice = (state: RootState) => state.comments.loadings.getComments;
+export const addCommentSlice = (state: RootState) => state.comments.loadings.addComment;
+export const deleteCommentSlice = (state: RootState) => state.comments.loadings.deleteComment;
 
 const commentsSlice = createSlice({
   name: 'comments',
@@ -42,6 +45,30 @@ const commentsSlice = createSlice({
       })
       .addCase(getComments.rejected, (state) => {
         state.loadings.getComments = false;
+        state.error = true;
+      })
+      .addCase(deleteComment.pending, (state) => {
+        state.loadings.deleteComment = true;
+        state.error = false;
+      })
+      .addCase(deleteComment.fulfilled, (state) => {
+        state.loadings.deleteComment = false;
+        state.error = false;
+      })
+      .addCase(deleteComment.rejected, (state) => {
+        state.loadings.deleteComment = false;
+        state.error = true;
+      })
+      .addCase(postComment.pending, (state) => {
+        state.loadings.addComment = true;
+        state.error = false;
+      })
+      .addCase(postComment.fulfilled, (state) => {
+        state.loadings.addComment = false;
+        state.error = false;
+      })
+      .addCase(postComment.rejected, (state) => {
+        state.loadings.addComment = false;
         state.error = true;
       });
   }
