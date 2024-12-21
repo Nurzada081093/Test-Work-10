@@ -8,6 +8,12 @@ export interface INews {
 
 export type NewsWithoutId = Omit<Item, 'id',' create_date'>
 
+export interface NewsMutation {
+  title: string;
+  description: string;
+  image: File | null;
+}
+
 export interface IComment {
   id: string;
   news_id: string;
@@ -15,4 +21,5 @@ export interface IComment {
   description: string;
 }
 
-export type CommentWithoutId = Omit<IComment, 'id', ' create_date'>
+
+
